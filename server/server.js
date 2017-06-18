@@ -40,12 +40,12 @@ app.get('/todos/:id',(req,res)=>{
     //valid id is using isValid();
     //error with 404
     if(!ObjectID.isValid(id)){
-        return res.status(400).send('not a valid id');
+        return res.status(404).send('not a valid id');
     }
 
     Todo.findById(id).then((todo)=>{
         if(!todo){
-           return res.status(400).send('Todo not exit');
+           return res.status(404).send('Todo not exit');
         }
         res.status(200).send({todo});
     }).catch((e)=>res.status(400).send());
