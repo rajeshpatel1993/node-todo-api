@@ -2,8 +2,8 @@ var env = process.env.NODE_ENV || 'development';
 
 if(env === "development"){
     process.env.PORT = 3000;
-    process.env.PROD_MONGODB = 'mongodb://localhost:27017/TodoApp';
+    process.env.PROD_MONGODB = 'mongodb://localhost:27017/todoapp';
 }else if(env === "test"){
     process.env.PORT = 3000;
-    process.env.PROD_MONGODB = 'mongodb://localhost:27017/TodoAppTest';
+    process.env.PROD_MONGODB = 'mongodb://localhost:27017/todoapptest';
 }
