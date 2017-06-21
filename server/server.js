@@ -135,7 +135,7 @@ app.post('/users/login',(req,res)=>{
     User.findByCredentials(body.email,body.password).then((user)=>{
         return user.generateAuthToken().then((token)=>{
             res.header('x-auth',token).status(200).send(user);
-           
+
         });
 
     }).catch((e)=>{
@@ -143,6 +143,16 @@ app.post('/users/login',(req,res)=>{
     });
 
 
+});
+
+app.delete('/users/me/token',authenticate,(req,res)=>{
+   // var user = new User();
+ req.user.removeToken(req.token).then(()=>{
+        res.status(200).send();
+
+    },()=>{
+        res.status(400).send();
+    });
 });
 app.listen(port,()=>{
     console.log(`Starting on port ${port}`);
